@@ -193,6 +193,8 @@ class _AccesoScreenState extends State<AccesoScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(_registro ? 'Crear cuenta' : 'Entrar')),
       body: ListView(padding: const EdgeInsets.all(20), children: [
+        const Center(child: LogoUnidental(tam: 72)),
+        const SizedBox(height: 20),
         SegmentedButton<bool>(
           segments: const [
             ButtonSegment(value: true, label: Text('Soy nuevo')),

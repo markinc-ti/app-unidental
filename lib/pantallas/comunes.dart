@@ -161,3 +161,37 @@ Color colorEstado(String e) {
       return Paleta.lima;
   }
 }
+
+/// Logo oficial: sillón dental con lámpara (lima y lavanda sobre tarjeta).
+class LogoUnidental extends StatelessWidget {
+  final double tam;
+  const LogoUnidental({super.key, this.tam = 36});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(width: tam, height: tam, child: CustomPaint(painter: _LogoPintor()));
+}
+
+class _LogoPintor extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final s = size.width / 100;
+    canvas.scale(s);
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(0, 0, 100, 100), const Radius.circular(22)), Paint()..color = Paleta.tarjeta);
+    Paint trazo(double w) => Paint()
+      ..color = Paleta.lima
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = w
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    canvas.drawPath(Path()..moveTo(20, 66)..lineTo(66, 66)..lineTo(78, 38), trazo(8)); // asiento y respaldo
+    canvas.drawLine(const Offset(20, 66), const Offset(12, 77), trazo(7)); // piernera
+    canvas.drawLine(const Offset(43, 66), const Offset(43, 82), trazo(7)); // poste
+    canvas.drawLine(const Offset(30, 84), const Offset(56, 84), trazo(6)); // base
+    canvas.drawPath(Path()..moveTo(24, 12)..lineTo(52, 12)..lineTo(52, 22), trazo(5)); // brazo de la lámpara
+    canvas.drawCircle(const Offset(81, 31), 5.5, Paint()..color = Paleta.lima); // cabecera
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(42, 22, 20, 9), const Radius.circular(4.5)), Paint()..color = Paleta.lavanda); // lámpara
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}

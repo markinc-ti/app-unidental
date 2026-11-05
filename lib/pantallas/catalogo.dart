@@ -157,17 +157,7 @@ class _Logo extends StatelessWidget {
   const _Logo();
 
   @override
-  Widget build(BuildContext context) => Container(
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(color: Paleta.lima, borderRadius: BorderRadius.circular(8)),
-        alignment: Alignment.center,
-        child: Container(
-          width: 18,
-          height: 18,
-          decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Paleta.tinta, width: 3.5)),
-        ),
-      );
+  Widget build(BuildContext context) => const LogoUnidental();
 }
 
 class _Banner extends StatelessWidget {
